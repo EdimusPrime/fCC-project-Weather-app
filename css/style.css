@@ -43,7 +43,7 @@ p{
 	margin-top: 3rem;
 }
 
-.sun, .snow, .rain, .cloudy, .windy{
+.seasons, .sun, .snow, .rain, .cloudy, .windy{
 	width: 45rem;
 	border-radius: 200px;
 	margin-top: 30px;
@@ -51,9 +51,14 @@ p{
 	margin: auto;
 }
 
+.seasons{
+
+}
+
 .sun{
 	background-color: gold;
-	/*display: none;*/
+	display: none;
+	/*visibility: hidden;*/
 }
 
 .snow{
