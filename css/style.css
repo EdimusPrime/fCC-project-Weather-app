@@ -1,0 +1,77 @@
+body{
+	background-color: #D3D3D3;
+}
+
+.container {
+	width: 45vw;
+	height: 90vh;
+	margin: auto;
+	border: 1px solid #708090;
+	margin-top: 3rem; 
+	background-color: #EEE8AA;
+	border-radius: 75px;
+	border-bottom: 10px solid #708090;
+}
+
+.header{
+	padding: 2rem;
+}
+
+img{
+	margin: auto;
+}
+
+/*WEATHER DETAILS */
+
+span{
+	font-weight: bolder;
+	font-size: 1.7rem;
+	padding-right: 2rem;
+}
+
+.details{
+	margin-top: 3rem;
+}
+
+.sun, .snow, .rain, .cloudy, .windy{
+	width: 45rem;
+	border-radius: 200px;
+	margin-top: 30px;
+	padding:5rem;
+	margin: auto;
+}
+
+.sun{
+	background-color: gold;
+	/*display: none;*/
+}
+
+.snow{
+	background-color: #F0F8FF;
+	display: none;
+}
+
+.rain{
+	background-color: #5F9EA0;
+	display: none;
+}
+
+.cloudy{
+	background-color: #C0C0C0;
+	display: none;
+}
+
+.windy{
+	background-color: #B0C4DE;
+	display: none;
+}
+
+.btn{
+	margin-top: 3rem;
+}
+
+.report, .location, .temp, .winds, .humidity, .sunrise, .sunset {
+	display: flex;
+	align-content: baseline;
+	justify-content: center;
+}
