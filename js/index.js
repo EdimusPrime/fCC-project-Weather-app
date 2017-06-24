@@ -17,44 +17,25 @@ $.getJSON('https://ipinfo.io', function(d){
   loc = d.loc.split(',');
   console.log(loc);
 
-  $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+ loc[0] + '&lon=' + loc[1] + '&APPID='+ API_KEY, function(weather){
-  	console.log('get the yayo ', + weather);
-
+  $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+ loc[0] + '&lon=' + loc[1] + '&APPID='+ API_KEY).done(function(data){
+  	// console.log('get the yayo ', + weather);
+  	$('#weather').text(data.weather[0].description);
+	$('#location').text(d.city + ', '+ d.region);
+  	$('#temp').text(data.main.temp);
+  	$('#wind').text(data.wind.speed);
+  	$('#humidity').text(data.main.humidity);
 
   })
 
   // console.log(loc[0]+' and '+ loc[1]);
 
-
+// 
 
  // checks user location and adds to page with city and region/state
 
-// $('#location').text(d.city + ', '+ d.region);
+// 
 
 })
-
-
-
-
-
-// function gettingJSON(){
-//         document.write("jquery loaded");
-//         $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London&APPID=ee6596241130f193adf1ba90e625cc10",function(json){
-//             document.write(JSON.stringify(json));
-//         });
-//     }
-
-	// var weather = new XMLHttpRequest();
-	// weather.open("GET", "http://api.wunderground.com/api/e4153379418334ff/conditions/q/CA/San_Francisco.json", false);
-	// weather.send(null);
-
-	// var r=JSON.parse(weather.response);
-	// var weather = r.current_observation.display_location.full + "<br/>";
-	// var temp= r.current_observation.temperature_string + "<br/";
-	// var wind= r.current_observation.wind_string + "<br/";
-	// document.getElementById("weather").innerHTML= weather;
-	// document.getElementById("temp").innerHTML= temp;
-	// document.getElementById("wind").innerHTML= wind;
 
 
 })
