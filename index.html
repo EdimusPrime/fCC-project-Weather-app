@@ -17,39 +17,43 @@
 		<div class="weather container">
 			<div class="header">
 				<h1 class="text-center">Get Yo Weather!</h1>
+				<h3 class="location" id="location">Loading Location</h3>
 			</div>
 
+			<div class="report"><h3 id="weather">Loading...</h3></div>
+			
 			<div class="weather img seasons">
-				<img class="img-responsive" src="https://openclipart.org/image/2400px/svg_to_png/261671/Four-season-symbols.png" width="300px" height="300px">
+				<img class="img-responsive" src="https://openclipart.org/image/2400px/svg_to_png/261671/Four-season-symbols.png" width="200px" height="200px">
 			</div>
 
 			<div class="weather img sun">
-				<img class="img-responsive" src="http://s3.amazonaws.com/libapps/accounts/5405/images/icon_2311.png" width="300px" height="300px">
+				<img class="img-responsive" src="http://s3.amazonaws.com/libapps/accounts/5405/images/icon_2311.png" width="200px" height="200px">
 			</div>
 
 			<div class="weather img snow">
-				<img class="img-responsive" src="http://images.clipartpanda.com/weather-clipart-for-teachers-clip-art-snow-flake.png" width="300px" height="300px">
+				<img class="img-responsive" src="http://images.clipartpanda.com/weather-clipart-for-teachers-clip-art-snow-flake.png" width="200px" height="200px">
 			</div>
 
 			<div class="weather img rain">
-				<img class="img-responsive" src="https://s-media-cache-ak0.pinimg.com/originals/0a/8b/e9/0a8be92a35c4b202d0649045a99e9f6b.png" width="300px" height="300px">
+				<img class="img-responsive" src="https://s-media-cache-ak0.pinimg.com/originals/0a/8b/e9/0a8be92a35c4b202d0649045a99e9f6b.png" width="200px" height="200px">
 			</div>
 
 			<div class="weather img cloudy">
-				<img class="img-responsive" src="http://images.clipartpanda.com/weather-clipart-black-and-white-cloudy-clipart-black-and-white-partly_cloudy_outline_T.png" width="300px" height="300px">
+				<img class="img-responsive" src="http://images.clipartpanda.com/weather-clipart-black-and-white-cloudy-clipart-black-and-white-partly_cloudy_outline_T.png" width="200px" height="200px">
 			</div>
 
 			<div class="weather img windy">
-				<img class="img-responsive" src="https://clipartion.com/wp-content/uploads/2015/11/wind-clipart-forecast-icon-line-icon-weather-wind-windy1.png" width="300px" height="300px">
+				<img class="img-responsive" src="https://clipartion.com/wp-content/uploads/2015/11/wind-clipart-forecast-icon-line-icon-weather-wind-windy1.png" width="200px" height="200px">
 			</div>
 
 
 			<div class="weather details text-center">
-				<div class="report"><span>Report: </span><p id="weather">Report</p></div>
-				<div class="location" ><span> Location: </span><p id="location">Location</p></div>
-				<div class="temp" ><span> Temperature: </span><p id="temp">Temperature</p></div>
-				<div class="winds" ><span> Winds: </span><p id="wind">Winds</p></div>
-				<div class="humidity"><span> Humidity: </span><p id="humidity">Humidity</p></div>
+				
+				<div class="temp" ><span> Current Temperature: </span><p id="temp">Loading...</p></div>
+				<div class="temp-max"><span>high: </span><p id="high">Loading...</p></div>
+				<div class="temp-min"><span>low: </span><p id="low">Loading...</p></div>
+				<div class="winds" ><span> Winds: </span><p id="wind">Loading...</p></div>
+				<div class="humidity"><span> Humidity: </span><p id="humidity">Loading...</p></div>
 				<!-- <div class="sunrise"><span> Sunrise: </span><p>Sunrise</p></div>
 				<div class="sunset"><span> Sunset: </span><p>Sunset</p></div> -->
 				<button class="btn">Imperial Units</button>

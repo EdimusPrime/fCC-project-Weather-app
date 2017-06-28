@@ -2,7 +2,7 @@ body{
 	background-color: #D3D3D3;
 }
 
-h1{
+h1, h3{
 	font-family: 'Monda', sans-serif;
 }
 
@@ -44,7 +44,8 @@ p{
 }
 
 .seasons, .sun, .snow, .rain, .cloudy, .windy{
-	width: 45rem;
+	width: 25rem;
+	height: 25rem;
 	border-radius: 200px;
 	margin-top: 30px;
 	padding:5rem;
@@ -52,11 +53,14 @@ p{
 }
 
 .seasons{
+	/*display: none;*/
 
 }
 
 .sun{
 	background-color: gold;
+	/*color for clear skies*/
+	/*background-color: #00BFFF;*/
 	display: none;
 	/*visibility: hidden;*/
 }
@@ -85,7 +89,7 @@ p{
 	margin-top: 3rem;
 }
 
-.report, .location, .temp, .winds, .humidity, .sunrise, .sunset {
+.report, .location, .temp, .winds, .humidity, .sunrise, .sunset, .temp-max, .temp-min {
 	display: flex;
 	align-content: baseline;
 	justify-content: center;
