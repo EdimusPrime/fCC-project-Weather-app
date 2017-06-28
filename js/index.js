@@ -3,6 +3,8 @@ $(document).ready(function() {
 // API key for rest of code
 
 	var API_KEY = "eb7a60b05dc5c676d33e0f9d5b383737";
+	var cel=false;
+	var data;
 
 
 $(function(){
@@ -12,27 +14,27 @@ $(function(){
 
 var loc;
 
-$.getJSON('https://ipinfo.io', function(d){
-  console.log(d)
-  loc = d.loc.split(',');
-  console.log(loc);
+$.getJSON('https://ipinfo.io', function(APIdata){
+  loc = APIdata.loc.split(',');
 
-  $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+ loc[0] + '&lon=' + loc[1] + '&units=imperial&APPID='+ API_KEY).done(function(data){
-  	$('#weather').text(" " + data.weather[0].description);
-	$('#location').text(d.city + ', '+ d.region);
-  	$('#high').text(data.main.temp_max);
-  	$('#low').text(data.main.temp_min);
-  	$('#temp').text(data.main.temp);
-  	$('#wind').text(data.wind.speed + ' mph');
-  	$('#humidity').text(data.main.humidity + '%');
+  $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+ loc[0] + '&lon=' + loc[1] + '&units=imperial&APPID='+ API_KEY).done(function(wd){
+  	
+  	data=APIdata;
 
-  	var icon= data.weather[0].icon;
+  	$('#weather').text(" " + wd.weather[0].description);
+	$('#location').text(APIdata.city + ', '+ APIdata.region);
+  	$('#high').text(wd.main.temp_max);
+  	$('#low').text(wd.main.temp_min);
+  	$('#temp').text(wd.main.temp);
+  	$('#wind').text(wd.wind.speed + ' mph');
+  	$('#humidity').text(wd.main.humidity + '%');
+
+  	var icon= wd.weather[0].icon;
   	var iconSrc= "http://openweathermap.org/img/w/" + icon +".png"; 
 
   	$('#weather').prepend('<img src='+ iconSrc + '>');
 
-  	var weatherID= data.weather[0].id;
-  	console.log(weatherID);
+  	var weatherID= wd.weather[0].id;
 
   	if (weatherID >= 200 && weatherID<532 || weatherID >=960 && weatherID<963){
   		$('.seasons').css("display", "none");
@@ -47,10 +49,17 @@ $.getJSON('https://ipinfo.io', function(d){
   	} else if (weatherID > 800 && weatherID< 806){
   		$('.seasons').css("display", "none");
   		$('.cloudy').css("display", "flex");
-  	} else if (weatherID >951 && weatherID<960){
+  	} else if (weatherID >951 && weatherID<963){
   		$('.seasons').css("display", "none");
   		$('.windy').css("display", "flex");
   	}
+
+
+  	$(".btn").click(function(){
+  		$('')
+
+
+  	})
 
 
   })
