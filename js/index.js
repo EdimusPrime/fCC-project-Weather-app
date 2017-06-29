@@ -6,6 +6,14 @@ $(document).ready(function() {
 	var cel=false;
 	var data;
 
+	function displayTemp(fTemp,  c){
+		if (c) return Math.round((fTemp - 32) * (5/9)) + " C";
+		return Math.round(fTemp) + "F";
+	}
+
+
+	
+
 
 $(function(){
 
@@ -21,13 +29,22 @@ $.getJSON('https://ipinfo.io', function(APIdata){
   	
   	data=APIdata;
 
-  	$('#weather').text(" " + wd.weather[0].description);
-	$('#location').text(APIdata.city + ', '+ APIdata.region);
-  	$('#high').text(wd.main.temp_max);
-  	$('#low').text(wd.main.temp_min);
-  	$('#temp').text(wd.main.temp);
-  	$('#wind').text(wd.wind.speed + ' mph');
-  	$('#humidity').text(wd.main.humidity + '%');
+
+  	var weather=wd.weather[0].description;
+  	var location=APIdata.city + ', '+ APIdata.region;
+  	var highTemp=displayTemp(wd.main.temp_max, cel);
+  	var lowTemp=displayTemp(wd.main.temp_min, cel);
+  	var curTemp=displayTemp(wd.main.temp, cel);
+  	var wind=wd.wind.speed;
+	var humidity=wd.main.humidity;
+
+  	$('#weather').text(" " + weather);
+	$('#location').text(location);
+  	$('#high').text(highTemp);
+  	$('#low').text(lowTemp);
+  	$('#temp').text(curTemp);
+  	$('#wind').text( wind + ' mph');
+  	$('#humidity').text( humidity+ '%');
 
   	var icon= wd.weather[0].icon;
   	var iconSrc= "http://openweathermap.org/img/w/" + icon +".png"; 
