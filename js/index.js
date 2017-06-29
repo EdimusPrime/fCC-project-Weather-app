@@ -3,17 +3,13 @@ $(document).ready(function() {
 // API key for rest of code
 
 	var API_KEY = "eb7a60b05dc5c676d33e0f9d5b383737";
-	var cel=false;
-	var data;
+	var wd;
+	var units=false;
 
-	function displayTemp(fTemp,  c){
-		if (c) return Math.round((fTemp - 32) * (5/9)) + " C";
-		return Math.round(fTemp) + "F";
-	}
-
-
-	
-
+	// function displayTemp(fTemp,  c){
+	// 	if (c) return Math.round((fTemp - 32) * (5/9)) + "C";
+	// 	return Math.round(fTemp) + "F";
+	// }
 
 $(function(){
 
@@ -22,27 +18,27 @@ $(function(){
 
 var loc;
 
-$.getJSON('https://ipinfo.io', function(APIdata){
-  loc = APIdata.loc.split(',');
+$.getJSON('https://ipinfo.io', function(d){
+  loc = d.loc.split(',');
 
-  $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+ loc[0] + '&lon=' + loc[1] + '&units=imperial&APPID='+ API_KEY).done(function(wd){
+  $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+ loc[0] + 
+  	'&lon=' + loc[1] + '&units=imperial&APPID='+ API_KEY).done(function(APIdata){
   	
-  	data=APIdata;
-
+  	wd=APIdata;
 
   	var weather=wd.weather[0].description;
-  	var location=APIdata.city + ', '+ APIdata.region;
-  	var highTemp=displayTemp(wd.main.temp_max, cel);
-  	var lowTemp=displayTemp(wd.main.temp_min, cel);
-  	var curTemp=displayTemp(wd.main.temp, cel);
+  	var location=d.city + ', '+ d.region;
+  	var highTemp=wd.main.temp_max;
+  	var lowTemp=wd.main.temp_min;
+  	var curTemp=wd.main.temp;
   	var wind=wd.wind.speed;
 	var humidity=wd.main.humidity;
 
   	$('#weather').text(" " + weather);
 	$('#location').text(location);
-  	$('#high').text(highTemp);
-  	$('#low').text(lowTemp);
-  	$('#temp').text(curTemp);
+  	$('#high').text(highTemp + "F");
+  	$('#low').text(lowTemp + "F");
+  	$('#temp').text(curTemp + "F");
   	$('#wind').text( wind + ' mph');
   	$('#humidity').text( humidity+ '%');
 
@@ -70,24 +66,41 @@ $.getJSON('https://ipinfo.io', function(APIdata){
   		$('.seasons').css("display", "none");
   		$('.windy').css("display", "flex");
   	}
-
-
-  	$(".btn").click(function(){
-  		$('')
-
-
-  	})
-
-
   })
 
-  // console.log(loc[0]+' and '+ loc[1]);
+   $('.btn').click(function(){
+   
 
-// 
+   	if (units===false){
+   		units =true;
 
- // checks user location and adds to page with city and region/state
+   		var highTemp=Math.round((wd.main.temp_max - 32) * (5/9)) + "C";;
+  		var lowTemp=Math.round((wd.main.temp_min - 32) * (5/9)) + "C"
+  		var curTemp=Math.round((wd.main.temp - 32) * (5/9)) + "C"
+  		$('#high').text(highTemp);
+  		$('#low').text(lowTemp);
+  		$('#temp').text(curTemp);
 
-// 
+  	} else {
+  		units=false;
+  		var highTemp=wd.main.temp_max;
+  		var lowTemp=wd.main.temp_min;
+  		var curTemp=wd.main.temp;
+  		$('#high').text(highTemp);
+  		$('#low').text(lowTemp);
+  		$('#temp').text(curTemp);
+  	}
+  	console.log(units);
+  	console.log(highTemp);
+  	console.log(lowTemp);
+  	console.log(curTemp)
+  	 
+  	 // Math.round((fTemp - 32) * (5/9)) + "C";
+  })
+
+
+
+
 
 })
 
